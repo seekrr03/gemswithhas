@@ -25,7 +25,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center text-center px-4 overflow-hidden">
         {/* Background Image - UPDATED HERE */}
         <img 
-          src="/hero-bg.png" 
+          src="/hero-bg.jpeg" 
           alt="Luxury Gems Background"
           className="absolute inset-0 w-full h-full object-cover brightness-[0.6]"
         />
