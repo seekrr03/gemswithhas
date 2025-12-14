@@ -23,11 +23,11 @@ export default function Home() {
 
       {/* 2. Hero Section with Background Image */}
       <section className="relative h-[600px] flex items-center justify-center text-center px-4 overflow-hidden">
-        {/* Background Image */}
+        {/* Background Image - UPDATED HERE */}
         <img 
-          src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?q=80&w=2000&auto=format&fit=crop" 
-          alt="Luxury Jewelry Background"
-          className="absolute inset-0 w-full h-full object-cover brightness-50"
+          src="/hero-bg.png" 
+          alt="Luxury Gems Background"
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.6]"
         />
         
         {/* Content Overlay */}
