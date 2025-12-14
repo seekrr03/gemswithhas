@@ -1,159 +1,238 @@
 // src/app/page.tsx
+"use client";
+
+import Link from "next/link";
 import GoogleReviews from "../components/GoogleReviews";
+
+// --- PRODUCT DATA (Editable List) ---
+const gems = [
+  {
+    id: 1,
+    title: "Cornflower Blue Sapphire",
+    carats: "3.50",
+    shape: "Cushion",
+    origin: "Sri Lanka",
+    price: 2255,
+    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc5e?auto=format&fit=crop&w=800&q=80",
+    status: "Available"
+  },
+  {
+    id: 2,
+    title: "Vivid Red Ruby (Unheated)",
+    carats: "1.82",
+    shape: "Oval",
+    origin: "Mozambique",
+    price: 5400,
+    image: "https://images.unsplash.com/photo-1615655114865-4cc1bda5901e?auto=format&fit=crop&w=800&q=80",
+    status: "Available"
+  },
+  {
+    id: 3,
+    title: "Neon Blue Paraiba Tourmaline",
+    carats: "4.02",
+    shape: "Pear",
+    origin: "Nigeria",
+    price: 18500,
+    image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=800&q=80",
+    status: "Sold"
+  },
+  {
+    id: 4,
+    title: "Royal Blue Sapphire",
+    carats: "5.10",
+    shape: "Octagon",
+    origin: "Madagascar",
+    price: 12500,
+    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80",
+    status: "Available"
+  },
+  {
+    id: 5,
+    title: "Teal Green Sapphire",
+    carats: "2.45",
+    shape: "Round",
+    origin: "Sri Lanka",
+    price: 1800,
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    status: "Available"
+  },
+  {
+    id: 6,
+    title: "Pink Mahenge Spinel",
+    carats: "3.15",
+    shape: "Cushion",
+    origin: "Tanzania",
+    price: 4200,
+    image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=80",
+    status: "Available"
+  },
+];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
-      {/* 1. Navbar */}
-      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-100 sticky top-0 bg-white/95 z-50 backdrop-blur-sm">
+      
+      {/* 1. NAVBAR */}
+      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-100 sticky top-0 bg-white/95 z-50">
         <div className="text-2xl font-serif font-bold tracking-widest text-black">
           GEMS WITH HAS
         </div>
-        <ul className="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-600">
-          <li className="hover:text-black cursor-pointer transition">HOME</li>
-          <li className="hover:text-black cursor-pointer transition">RINGS</li>
-          <li className="hover:text-black cursor-pointer transition">PENDANTS</li>
-          <li className="hover:text-black cursor-pointer transition">CUSTOM</li>
-        </ul>
-        <div className="flex gap-4 text-sm">
-          <button className="hover:text-blue-600 transition">Search</button>
-          <button className="hover:text-blue-600 transition">Cart (0)</button>
+        
+        {/* Simple Links */}
+        <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-500">
+          <a href="#" className="hover:text-black transition">SAPPHIRES</a>
+          <a href="#" className="hover:text-black transition">RUBIES</a>
+          <a href="#" className="hover:text-black transition">SPINELS</a>
+          <a href="#" className="hover:text-black transition">ALL GEMS</a>
         </div>
+
+        <button className="text-sm font-bold border border-black px-6 py-2 hover:bg-black hover:text-white transition">
+          CONTACT US
+        </button>
       </nav>
 
-      {/* 2. Hero Section with Background Image */}
-      <section className="relative h-[600px] flex items-center justify-center text-center px-4 overflow-hidden">
-        {/* Background Image - UPDATED HERE */}
+      {/* 2. HERO SECTION (With your image) */}
+      <section className="relative h-[500px] flex items-center justify-center text-center px-4 overflow-hidden">
+        {/* Your Background Image */}
         <img 
-          src="/hero-bg.jpeg" 
+          src="/hero-bg.png" 
           alt="Luxury Gems Background"
           className="absolute inset-0 w-full h-full object-cover brightness-[0.6]"
         />
         
-        {/* Content Overlay */}
         <div className="relative z-10 max-w-3xl text-white">
-          <p className="text-sm tracking-[0.3em] mb-4 uppercase text-gray-200">
-            Authentic Sri Lankan Gemstones
+          <p className="text-xs md:text-sm tracking-[0.3em] mb-4 uppercase text-gray-300 font-bold">
+            Direct from the Mines
           </p>
-          <h1 className="text-5xl md:text-7xl font-serif mb-8 leading-tight">
-            Discover the Soul <br /> of the Earth
+          <h1 className="text-5xl md:text-7xl font-serif mb-6 leading-tight">
+            Investment Grade <br /> Gemstones
           </h1>
-          <button className="bg-white text-black px-10 py-4 text-sm tracking-widest hover:bg-gray-200 transition font-bold">
-            VIEW COLLECTION
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-lg">
+            We specialize in unheated Sapphires, Rubies, and rare Spinels sourced ethically from Sri Lanka and Africa.
+          </p>
+        </div>
+      </section>
+
+      {/* 3. PRODUCT GRID */}
+      <section className="py-20 px-4 max-w-[1400px] mx-auto">
+        <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-4">
+          <h2 className="text-3xl font-serif text-gray-900">New Acquisitions</h2>
+          <span className="text-sm text-gray-500 font-medium">{gems.length} Stones Available</span>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {gems.map((gem) => (
+            // This Link tag makes the whole card clickable to the next page
+            <Link key={gem.id} href={`/product/${gem.id}`}>
+              <div className="group cursor-pointer bg-white rounded-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden">
+                
+                {/* Image Container */}
+                <div className="h-64 relative bg-gray-50 overflow-hidden">
+                  {gem.status === "Sold" && (
+                    <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase rounded z-10 shadow-sm">
+                      Sold
+                    </div>
+                  )}
+                  <img 
+                    src={gem.image} 
+                    alt={gem.title} 
+                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${gem.status === 'Sold' ? 'grayscale opacity-80' : ''}`}
+                  />
+                </div>
+
+                {/* Details Container */}
+                <div className="p-5">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                      {gem.origin}
+                    </span>
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-gray-400 border border-gray-200 px-2 py-1 rounded">
+                      {gem.shape}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-serif font-medium text-gray-900 mb-4 group-hover:text-blue-800 transition line-clamp-2">
+                    {gem.title}
+                  </h3>
+
+                  <div className="border-t border-dashed border-gray-200 pt-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs text-gray-400 uppercase font-bold">Weight</p>
+                      <p className="text-sm font-medium text-gray-800">{gem.carats} ct</p>
+                    </div>
+                    <div className="text-right">
+                       {gem.status === "Sold" ? (
+                         <span className="text-red-500 font-bold text-sm">Sold Out</span>
+                       ) : (
+                         <>
+                           <p className="text-xs text-gray-400 uppercase font-bold">Price</p>
+                           <p className="text-lg font-bold text-gray-900">${gem.price.toLocaleString()}</p>
+                         </>
+                       )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <button className="border-b-2 border-black pb-1 text-sm font-bold hover:text-gray-600 hover:border-gray-600 transition tracking-widest uppercase">
+            View All Inventory
           </button>
         </div>
       </section>
 
-      {/* 3. Featured Products Grid */}
-      <section className="py-20 px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-serif text-center mb-16">New Arrivals</h2>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
-          {/* Blue Sapphire Ring */}
-          <ProductCard 
-            title="Royal Blue Sapphire Ring" 
-            price="Rs 125,000" 
-            category="Rings"
-            image="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=500&q=80"
-          />
-          {/* Amethyst Pendant */}
-          <ProductCard 
-            title="Amethyst Silver Pendant" 
-            price="Rs 18,500" 
-            category="Pendants"
-            image="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=500&q=80"
-          />
-          {/* Ruby Earrings */}
-          <ProductCard 
-            title="Classic Ruby Studs" 
-            price="Rs 45,000" 
-            category="Earrings"
-            image="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80"
-          />
-          {/* Wedding Band */}
-          <ProductCard 
-            title="Eternity Gold Band" 
-            price="Rs 85,000" 
-            category="Wedding"
-            image="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=500&q=80"
-          />
-        </div>
-      </section>
-
-      {/* 4. Split Section: Story & Reviews */}
-      <section className="bg-gray-50 py-24 px-8">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          {/* Left: Text Content */}
+      {/* 4. TRUST & REVIEWS SECTION */}
+      <section className="bg-gray-50 py-20 px-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl font-serif mb-6 text-gray-900">Crafted with Passion</h2>
-            <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-              "Gems with Has" isn't just a store; it's a journey from the mines of Sri Lanka to your jewelry box. 
-              We handpick every sapphire, ruby, and emerald to ensure you get the brilliant sparkle you deserve.
+            <h2 className="text-3xl font-serif mb-6 text-gray-900">The "Gems with Has" Promise</h2>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Buying gemstones online requires trust. We provide high-resolution video, laboratory reports, 
+              and a transparent return policy for every stone we sell.
             </p>
-            <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl">💎</span>
-                    <span className="text-sm font-semibold text-gray-700">Certified Gems</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl">🔨</span>
-                    <span className="text-sm font-semibold text-gray-700">Handcrafted</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl">🚚</span>
-                    <span className="text-sm font-semibold text-gray-700">Island-wide Delivery</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl">✨</span>
-                    <span className="text-sm font-semibold text-gray-700">Lifetime Polish</span>
-                </div>
-            </div>
+            <ul className="space-y-4 text-sm text-gray-800 font-medium">
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span> 
+                Certified Natural (GIA/GRS Available)
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span> 
+                14-Day Inspection Period
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span> 
+                Free Insured Global Shipping
+              </li>
+            </ul>
           </div>
-
-          {/* Right: The Random Google Review Widget */}
-          <div className="flex justify-center relative">
-            {/* Decorative circle behind review */}
-            <div className="absolute top-0 right-10 w-32 h-32 bg-yellow-100 rounded-full blur-3xl opacity-50"></div>
+          
+          <div className="flex justify-center">
             <GoogleReviews />
           </div>
         </div>
       </section>
 
-      {/* 5. Footer */}
-      <footer className="bg-black text-white py-16 px-8 border-t border-gray-900">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <h2 className="text-2xl font-serif font-bold tracking-widest mb-6">GEMS WITH HAS</h2>
-          <div className="flex gap-8 text-sm text-gray-400 mb-8">
-            <a href="#" className="hover:text-white transition">Instagram</a>
-            <a href="#" className="hover:text-white transition">Facebook</a>
-            <a href="#" className="hover:text-white transition">WhatsApp</a>
+      {/* 5. FOOTER */}
+      <footer className="bg-black text-white py-12 border-t border-gray-900">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left">
+            <h2 className="text-xl font-serif font-bold tracking-widest mb-2">GEMS WITH HAS</h2>
+            <p className="text-xs text-gray-500">Colombo, Sri Lanka • Worldwide Shipping</p>
           </div>
-          <p className="text-xs text-gray-600">© 2025 Gems with Has. All Rights Reserved.</p>
+          
+          <div className="flex gap-8 text-xs font-bold tracking-widest text-gray-400">
+            <a href="#" className="hover:text-white transition">INSTAGRAM</a>
+            <a href="#" className="hover:text-white transition">WHATSAPP</a>
+            <a href="#" className="hover:text-white transition">EMAIL</a>
+          </div>
+        </div>
+        <div className="text-center mt-10 text-[10px] text-gray-600">
+          © 2025 Gems with Has. All Rights Reserved.
         </div>
       </footer>
-    </div>
-  );
-}
-
-// Updated Product Card to accept an Image URL
-function ProductCard({ title, price, category, image }: { title: string, price: string, category: string, image: string }) {
-  return (
-    <div className="group cursor-pointer">
-      <div className="h-80 w-full mb-4 relative overflow-hidden bg-gray-100 rounded-sm">
-        {/* Product Image */}
-        <img 
-            src={image} 
-            alt={title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        {/* Quick Add Button (Appears on Hover) */}
-        <button className="absolute bottom-0 left-0 right-0 bg-black text-white py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 font-medium text-sm">
-            ADD TO CART
-        </button>
-      </div>
-      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">{category}</p>
-      <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-800 transition">{title}</h3>
-      <p className="text-gray-700 mt-1 font-semibold">{price}</p>
     </div>
   );
 }
