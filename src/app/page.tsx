@@ -3,70 +3,7 @@
 
 import Link from "next/link";
 import GoogleReviews from "../components/GoogleReviews";
-
-// --- PRODUCT DATA (Editable List) ---
-const gems = [
-  {
-    id: 1,
-    title: "Cornflower Blue Sapphire",
-    carats: "3.50",
-    shape: "Cushion",
-    origin: "Sri Lanka",
-    price: 2255,
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc5e?auto=format&fit=crop&w=800&q=80",
-    status: "Available"
-  },
-  {
-    id: 2,
-    title: "Vivid Red Ruby (Unheated)",
-    carats: "1.82",
-    shape: "Oval",
-    origin: "Mozambique",
-    price: 5400,
-    image: "https://images.unsplash.com/photo-1615655114865-4cc1bda5901e?auto=format&fit=crop&w=800&q=80",
-    status: "Available"
-  },
-  {
-    id: 3,
-    title: "Neon Blue Paraiba Tourmaline",
-    carats: "4.02",
-    shape: "Pear",
-    origin: "Nigeria",
-    price: 18500,
-    image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=800&q=80",
-    status: "Sold"
-  },
-  {
-    id: 4,
-    title: "Royal Blue Sapphire",
-    carats: "5.10",
-    shape: "Octagon",
-    origin: "Madagascar",
-    price: 12500,
-    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80",
-    status: "Available"
-  },
-  {
-    id: 5,
-    title: "Teal Green Sapphire",
-    carats: "2.45",
-    shape: "Round",
-    origin: "Sri Lanka",
-    price: 1800,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
-    status: "Available"
-  },
-  {
-    id: 6,
-    title: "Pink Mahenge Spinel",
-    carats: "3.15",
-    shape: "Cushion",
-    origin: "Tanzania",
-    price: 4200,
-    image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=80",
-    status: "Available"
-  },
-];
+import { gems } from "@/data/gems"; // <--- Importing shared data from your new file
 
 export default function Home() {
   return (
@@ -91,7 +28,7 @@ export default function Home() {
         </button>
       </nav>
 
-      {/* 2. HERO SECTION (With your image) */}
+      {/* 2. HERO SECTION */}
       <section className="relative h-[500px] flex items-center justify-center text-center px-4 overflow-hidden">
         {/* Your Background Image */}
         <img 
