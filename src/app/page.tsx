@@ -3,9 +3,15 @@
 
 import Link from "next/link";
 import GoogleReviews from "../components/GoogleReviews";
-import { gems } from "@/data/gems"; // <--- Importing shared data from your new file
+import { gems } from "@/data/gems"; 
 
 export default function Home() {
+  
+  // Quick WhatsApp function for the Navbar button
+  const openWhatsApp = () => {
+    window.open("https://wa.me/94777752858?text=Hi,%20I%20have%20a%20question%20about%20Gems%20with%20Has.", "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       
@@ -15,22 +21,25 @@ export default function Home() {
           GEMS WITH HAS
         </div>
         
-        {/* Simple Links */}
+        {/* Links scroll to the collection section */}
         <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-500">
-          <a href="#" className="hover:text-black transition">SAPPHIRES</a>
-          <a href="#" className="hover:text-black transition">RUBIES</a>
-          <a href="#" className="hover:text-black transition">SPINELS</a>
-          <a href="#" className="hover:text-black transition">ALL GEMS</a>
+          <Link href="#collection" className="hover:text-black transition">SAPPHIRES</Link>
+          <Link href="#collection" className="hover:text-black transition">RUBIES</Link>
+          <Link href="#collection" className="hover:text-black transition">SPINELS</Link>
+          <Link href="#collection" className="hover:text-black transition">ALL GEMS</Link>
         </div>
 
-        <button className="text-sm font-bold border border-black px-6 py-2 hover:bg-black hover:text-white transition">
+        {/* Contact button now opens WhatsApp */}
+        <button 
+          onClick={openWhatsApp}
+          className="text-sm font-bold border border-black px-6 py-2 hover:bg-black hover:text-white transition"
+        >
           CONTACT US
         </button>
       </nav>
 
       {/* 2. HERO SECTION */}
       <section className="relative h-[500px] flex items-center justify-center text-center px-4 overflow-hidden">
-        {/* Your Background Image */}
         <img 
           src="/hero-bg.jpeg" 
           alt="Luxury Gems Background"
@@ -47,11 +56,18 @@ export default function Home() {
           <p className="text-gray-300 mb-8 max-w-xl mx-auto text-lg">
             We specialize in unheated Sapphires, Rubies, and rare Spinels sourced ethically from Sri Lanka and Africa.
           </p>
+          
+          {/* View Collection scrolls down */}
+          <Link href="#collection">
+            <button className="bg-white text-black px-8 py-3 font-bold tracking-widest hover:bg-gray-200 transition">
+              VIEW COLLECTION
+            </button>
+          </Link>
         </div>
       </section>
 
-      {/* 3. PRODUCT GRID */}
-      <section className="py-20 px-4 max-w-[1400px] mx-auto">
+      {/* 3. PRODUCT GRID (Added id="collection" for scrolling) */}
+      <section id="collection" className="py-20 px-4 max-w-[1400px] mx-auto scroll-mt-20">
         <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-4">
           <h2 className="text-3xl font-serif text-gray-900">New Acquisitions</h2>
           <span className="text-sm text-gray-500 font-medium">{gems.length} Stones Available</span>
@@ -59,11 +75,8 @@ export default function Home() {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {gems.map((gem) => (
-            // This Link tag makes the whole card clickable to the next page
             <Link key={gem.id} href={`/product/${gem.id}`}>
               <div className="group cursor-pointer bg-white rounded-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden">
-                
-                {/* Image Container */}
                 <div className="h-64 relative bg-gray-50 overflow-hidden">
                   {gem.status === "Sold" && (
                     <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase rounded z-10 shadow-sm">
@@ -76,8 +89,6 @@ export default function Home() {
                     className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${gem.status === 'Sold' ? 'grayscale opacity-80' : ''}`}
                   />
                 </div>
-
-                {/* Details Container */}
                 <div className="p-5">
                   <div className="flex justify-between items-start mb-2">
                     <span className="text-[10px] font-bold tracking-widest uppercase text-blue-600 bg-blue-50 px-2 py-1 rounded">
@@ -87,11 +98,9 @@ export default function Home() {
                       {gem.shape}
                     </span>
                   </div>
-
                   <h3 className="text-lg font-serif font-medium text-gray-900 mb-4 group-hover:text-blue-800 transition line-clamp-2">
                     {gem.title}
                   </h3>
-
                   <div className="border-t border-dashed border-gray-200 pt-3 flex items-center justify-between">
                     <div>
                       <p className="text-xs text-gray-400 uppercase font-bold">Weight</p>
@@ -115,9 +124,11 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-16">
-          <button className="border-b-2 border-black pb-1 text-sm font-bold hover:text-gray-600 hover:border-gray-600 transition tracking-widest uppercase">
-            View All Inventory
-          </button>
+          <Link href="#collection">
+            <button className="border-b-2 border-black pb-1 text-sm font-bold hover:text-gray-600 hover:border-gray-600 transition tracking-widest uppercase">
+              View All Inventory
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -161,9 +172,9 @@ export default function Home() {
           </div>
           
           <div className="flex gap-8 text-xs font-bold tracking-widest text-gray-400">
-            <a href="#" className="hover:text-white transition">INSTAGRAM</a>
-            <a href="#" className="hover:text-white transition">WHATSAPP</a>
-            <a href="#" className="hover:text-white transition">EMAIL</a>
+            <a href="https://instagram.com" target="_blank" className="hover:text-white transition">INSTAGRAM</a>
+            <a href="https://wa.me/94777752858" target="_blank" className="hover:text-white transition">WHATSAPP</a>
+            <a href="mailto:info@gemswithhas.com" className="hover:text-white transition">EMAIL</a>
           </div>
         </div>
         <div className="text-center mt-10 text-[10px] text-gray-600">
