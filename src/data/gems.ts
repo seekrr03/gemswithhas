@@ -3,12 +3,12 @@
 export const gems = [
   {
     id: 1,
-    title: "Royal Blue Sapphire",
+    title: "Blue Sapphire",
     carats: "4.15",
     shape: "Cushion",
     origin: "Sri Lanka (Ceylon)",
     price: 6800,
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc5e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/1.avif", // Renamed to ID
     status: "Available",
     dimensions: "9.5 x 8.2 x 5.1 mm",
     treatment: "None (Unheated)",
@@ -19,12 +19,12 @@ export const gems = [
   },
   {
     id: 2,
-    title: "Vivid Red Ruby",
+    title: "Ruby",
     carats: "2.05",
     shape: "Oval",
     origin: "Mozambique",
     price: 8500,
-    image: "https://images.unsplash.com/photo-1615655114865-4cc1bda5901e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/2.avif",
     status: "Available",
     dimensions: "8.1 x 6.5 x 4.2 mm",
     treatment: "Heated",
@@ -35,12 +35,12 @@ export const gems = [
   },
   {
     id: 3,
-    title: "Padparadscha Sapphire",
+    title: "Padparadscha",
     carats: "1.85",
     shape: "Oval",
     origin: "Sri Lanka",
     price: 12500,
-    image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=800&q=80", // Placeholder for pink-orange
+    image: "/images/3.avif",
     status: "Available",
     dimensions: "7.8 x 5.9 x 3.8 mm",
     treatment: "None (Unheated)",
@@ -56,7 +56,7 @@ export const gems = [
     shape: "Radiant",
     origin: "Sri Lanka",
     price: 3200,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80", // Placeholder for yellow/golden
+    image: "/images/4.avif",
     status: "Available",
     dimensions: "10.1 x 8.0 x 5.5 mm",
     treatment: "None (Unheated)",
@@ -67,12 +67,12 @@ export const gems = [
   },
   {
     id: 5,
-    title: "White Corundum (Sapphire)",
+    title: "Corundum",
     carats: "3.10",
     shape: "Round",
     origin: "Madagascar",
     price: 1500,
-    image: "https://images.unsplash.com/photo-1600003014608-c2ccc1570a65?auto=format&fit=crop&w=800&q=80", // Placeholder for white/clear stone
+    image: "/images/5.avif",
     status: "Available",
     dimensions: "8.5 x 8.5 x 5.2 mm",
     treatment: "None",
@@ -83,12 +83,12 @@ export const gems = [
   },
   {
     id: 6,
-    title: "Sri Lankan Geuda",
+    title: "Geuda",
     carats: "12.40",
     shape: "Rough/Uncut",
     origin: "Ratnapura, Sri Lanka",
     price: 850,
-    image: "https://images.unsplash.com/photo-1612441804231-77a36b284856?auto=format&fit=crop&w=800&q=80", // Placeholder for rough stone
+    image: "/images/6.avif",
     status: "Available",
     dimensions: "15.2 x 12.5 mm",
     treatment: "Unheated (Ideal for Heating)",
@@ -96,5 +96,21 @@ export const gems = [
     cut_grade: "Rough",
     certificate: "None",
     sku: "GEU-006"
+  },
+  {
+    id: 7,
+    title: "Chrysoberyl",
+    carats: "2.75",
+    shape: "Cushion",
+    origin: "Sri Lanka",
+    price: 2100,
+    image: "/images/7.avif",
+    status: "Available",
+    dimensions: "8.2 x 7.1 x 4.8 mm",
+    treatment: "None",
+    clarity: "Eye Clean",
+    cut_grade: "Very Good",
+    certificate: "GIA",
+    sku: "CHRY-007"
   }
 ];
