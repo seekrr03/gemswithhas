@@ -2,41 +2,16 @@
 "use client";
 
 import Link from "next/link";
-import GoogleReviews from "../components/GoogleReviews";
+import Navbar from "@/components/Navbar"; // Import the new Responsive Navbar
+import GoogleReviews from "@/components/GoogleReviews";
 import { gems } from "@/data/gems"; 
 
 export default function Home() {
-  
-  // Quick WhatsApp function for the Navbar button
-  const openWhatsApp = () => {
-    window.open("https://wa.me/94777752858?text=Hi,%20I%20have%20a%20question%20about%20Gems%20with%20Has.", "_blank");
-  };
-
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       
-      {/* 1. NAVBAR */}
-      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-100 sticky top-0 bg-white/95 z-50">
-        <div className="text-2xl font-serif font-bold tracking-widest text-black">
-          GEMS WITH HAS
-        </div>
-        
-        {/* Links scroll to the collection section */}
-        <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-500">
-          <Link href="#collection" className="hover:text-black transition">SAPPHIRES</Link>
-          <Link href="#collection" className="hover:text-black transition">RUBIES</Link>
-          <Link href="#collection" className="hover:text-black transition">SPINELS</Link>
-          <Link href="#collection" className="hover:text-black transition">ALL GEMS</Link>
-        </div>
-
-        {/* Contact button now opens WhatsApp */}
-        <button 
-          onClick={openWhatsApp}
-          className="text-sm font-bold border border-black px-6 py-2 hover:bg-black hover:text-white transition"
-        >
-          CONTACT US
-        </button>
-      </nav>
+      {/* 1. RESPONSIVE NAVBAR */}
+      <Navbar />
 
       {/* 2. HERO SECTION */}
       <section className="relative h-[500px] flex items-center justify-center text-center px-4 overflow-hidden">
@@ -46,34 +21,34 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover brightness-[0.6]"
         />
         
-        <div className="relative z-10 max-w-3xl text-white">
+        <div className="relative z-10 max-w-3xl text-white px-4">
           <p className="text-xs md:text-sm tracking-[0.3em] mb-4 uppercase text-gray-300 font-bold">
             Direct from the Mines
           </p>
-          <h1 className="text-5xl md:text-7xl font-serif mb-6 leading-tight">
+          {/* Made text responsive: text-4xl on mobile, text-7xl on desktop */}
+          <h1 className="text-4xl md:text-7xl font-serif mb-6 leading-tight">
             Investment Grade <br /> Gemstones
           </h1>
-          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-lg">
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto text-base md:text-lg leading-relaxed">
             We specialize in unheated Sapphires, Rubies, and rare Spinels sourced ethically from Sri Lanka and Africa.
           </p>
           
-          {/* View Collection scrolls down */}
           <Link href="#collection">
-            <button className="bg-white text-black px-8 py-3 font-bold tracking-widest hover:bg-gray-200 transition">
+            <button className="bg-white text-black px-8 py-3 font-bold tracking-widest hover:bg-gray-200 transition text-xs md:text-sm">
               VIEW COLLECTION
             </button>
           </Link>
         </div>
       </section>
 
-      {/* 3. PRODUCT GRID (Added id="collection" for scrolling) */}
-      <section id="collection" className="py-20 px-4 max-w-[1400px] mx-auto scroll-mt-20">
-        <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-4">
-          <h2 className="text-3xl font-serif text-gray-900">New Acquisitions</h2>
+      {/* 3. PRODUCT GRID */}
+      <section id="collection" className="py-16 md:py-20 px-4 max-w-[1400px] mx-auto scroll-mt-20">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 border-b border-gray-100 pb-4 gap-2">
+          <h2 className="text-2xl md:text-3xl font-serif text-gray-900">New Acquisitions</h2>
           <span className="text-sm text-gray-500 font-medium">{gems.length} Stones Available</span>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {gems.map((gem) => (
             <Link key={gem.id} href={`/product/${gem.id}`}>
               <div className="group cursor-pointer bg-white rounded-lg hover:shadow-2xl transition duration-300 border border-gray-100 overflow-hidden">
@@ -92,7 +67,7 @@ export default function Home() {
                 <div className="p-5">
                   <div className="flex justify-between items-start mb-2">
                     <span className="text-[10px] font-bold tracking-widest uppercase text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                      {gem.origin}
+                      {gem.origin.split(',')[0]}
                     </span>
                     <span className="text-[10px] font-bold tracking-widest uppercase text-gray-400 border border-gray-200 px-2 py-1 rounded">
                       {gem.shape}
@@ -133,11 +108,11 @@ export default function Home() {
       </section>
 
       {/* 4. TRUST & REVIEWS SECTION */}
-      <section className="bg-gray-50 py-20 px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="bg-gray-50 py-16 md:py-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
-            <h2 className="text-3xl font-serif mb-6 text-gray-900">The "Gems with Has" Promise</h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <h2 className="text-2xl md:text-3xl font-serif mb-6 text-gray-900">The "Gems with Has" Promise</h2>
+            <p className="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
               Buying gemstones online requires trust. We provide high-resolution video, laboratory reports, 
               and a transparent return policy for every stone we sell.
             </p>
@@ -157,7 +132,7 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="flex justify-center">
+          <div className="flex justify-center w-full">
             <GoogleReviews />
           </div>
         </div>
@@ -171,7 +146,7 @@ export default function Home() {
             <p className="text-xs text-gray-500">Colombo, Sri Lanka • Worldwide Shipping</p>
           </div>
           
-          <div className="flex gap-8 text-xs font-bold tracking-widest text-gray-400">
+          <div className="flex flex-wrap justify-center gap-8 text-xs font-bold tracking-widest text-gray-400">
             <a href="https://instagram.com" target="_blank" className="hover:text-white transition">INSTAGRAM</a>
             <a href="https://wa.me/94777752858" target="_blank" className="hover:text-white transition">WHATSAPP</a>
             <a href="mailto:info@gemswithhas.com" className="hover:text-white transition">EMAIL</a>
