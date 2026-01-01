@@ -96,21 +96,5 @@ export const gems = [
     cut_grade: "Rough",
     certificate: "None",
     sku: "GEU-006"
-  },
-  {
-    id: 7,
-    title: "Green Chrysoberyl",
-    carats: "2.75",
-    shape: "Cushion",
-    origin: "Sri Lanka",
-    price: 2100,
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc5e?auto=format&fit=crop&w=800&q=80", // Re-using sapphire image or find green placeholder
-    status: "Available",
-    dimensions: "8.2 x 7.1 x 4.8 mm",
-    treatment: "None",
-    clarity: "Eye Clean",
-    cut_grade: "Very Good",
-    certificate: "GIA",
-    sku: "CHRY-007"
   }
 ];
